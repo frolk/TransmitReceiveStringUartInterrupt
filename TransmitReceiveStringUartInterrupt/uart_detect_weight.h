@@ -10,3 +10,4 @@
 #define UART_DETECT_WEIGHT_H_
 
 #endif /* UART_DETECT_WEIGHT_H_ */
+

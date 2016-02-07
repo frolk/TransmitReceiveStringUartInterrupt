@@ -107,7 +107,13 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="uart_detect_weight.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="uart_detect_weight.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

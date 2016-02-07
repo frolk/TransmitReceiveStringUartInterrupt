@@ -68,7 +68,7 @@ void USART_FlushRxBuf(void)  // flush our ring buffer after getting all of the a
 	rxCount = 0;
 }
 
-unsigned char USART_GetChar(void)
+unsigned char USART_GetChar(void) // забираем из буфера по указателю башки по одному символу
 {
 	unsigned char sym;
 	if(rxCount > 0)

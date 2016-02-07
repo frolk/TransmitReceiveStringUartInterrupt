@@ -30,7 +30,7 @@ void UART_Init() // initialize UART
 	sei();
 }
 
-ISR (USART_RX_vect)
+ISR (USART_RX_vect)   // interrupt routine
 {
 	if(rxCount < SIZE_BUF)
 	{
@@ -42,7 +42,7 @@ ISR (USART_RX_vect)
 }
 //hello I added comment
 
-void ControlBottomValue()
+void ControlBottomValue()   // function for detecting value of weight
 {
 	DDRB |= (1<<PORTB3);
 	if (CurrentWeight>3.5)
@@ -56,12 +56,12 @@ void ControlBottomValue()
 	
 }
 
-unsigned char usart_GetRxCount(void)
+unsigned char usart_GetRxCount(void) // I don't know what is it for
 {
 	return rxCount;
 }
 
-void USART_FlushRxBuf(void)
+void USART_FlushRxBuf(void)  // flush our ring buffer after getting all of the array's member in out CurrentValue variable
 {
  	rxBufTail = 0;
 	rxBufHead = 0;
@@ -82,7 +82,7 @@ unsigned char USART_GetChar(void)
 	return 0;
 }
 
-void USART_GetCurrentWeight()
+void USART_GetCurrentWeight() 
 {
 	
 		for (int i=0; i<16; i++)

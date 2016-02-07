@@ -1,6 +1,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdlib.h>
+#include "uart_detect_weight.h"
 
 int main(void) // main function do something
 {

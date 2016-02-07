@@ -2,7 +2,7 @@
 #include <avr/interrupt.h>
 #include <stdlib.h>
 
-int main(void)
+int main(void) // main function do something
 {
 	UART_Init();
 	

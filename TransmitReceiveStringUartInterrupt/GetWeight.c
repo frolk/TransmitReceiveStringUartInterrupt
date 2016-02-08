@@ -44,10 +44,6 @@ void ControlBottomValue()   // function for detecting value of weight
 	
 }
 
-unsigned char usart_GetRxCount(void) // I don't know what is it for
-{
-	return rxCount;
-}
 
 void USART_FlushRxBuf(void)  // flush our ring buffer after getting all of the array's member in out CurrentValue variable
 {

@@ -1,6 +1,8 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdlib.h>
+
+
 #include "GetWeight.h"
 #include "UartInit.h"
 
@@ -11,7 +13,7 @@ int main(void) // main function do something
 {
 	sei();
 	
-	UART_Init();
+	UART_Init(MYUBRR);
 	
 	
 	while(1)
@@ -20,8 +22,8 @@ int main(void) // main function do something
 		{
 			
 		USART_GetCurrentWeight();  // here we getting current weight
+		
 		}
 	}
 }
 
-// this is second change

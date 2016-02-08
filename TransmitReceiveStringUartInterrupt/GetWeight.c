@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include "GetWeight.h"
 
+
 unsigned char usartRxBuf[SIZE_BUF];
 unsigned char rxBufTail = 0;
 unsigned char rxBufHead = 0;
@@ -16,20 +17,6 @@ float DetectValue;
 
 //macros and variables
 
-void UART_Init() // initialize UART
-{
-	//set baud rate = 9600bps
-	UBRR0H = 0x00;
-	UBRR0L = 0x67;
-	
-	//set 1 stop bit, no parity bit and 8 bit character size
-	UCSR0C = 0x06;
-	
-	//enable transmission and reception
-	UCSR0B = 0x18;
-	UCSR0B |= (1<<RXCIE0)|(1<<TXCIE0);
-	sei();
-}
 
 ISR (USART_RX_vect)   // interrupt routine
 {

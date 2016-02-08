@@ -1,12 +1,16 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdlib.h>
-#include "uart_detect_weight.h"
-
 #include "GetWeight.h"
+#include "UartInit.h"
+
+
+
 
 int main(void) // main function do something
 {
+	sei();
+	
 	UART_Init();
 	
 	

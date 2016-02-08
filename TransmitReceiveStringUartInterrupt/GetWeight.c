@@ -1,4 +1,9 @@
-#define SIZE_BUF 32
+
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <stdlib.h>
+#include "GetWeight.h"
+
 unsigned char usartRxBuf[SIZE_BUF];
 unsigned char rxBufTail = 0;
 unsigned char rxBufHead = 0;
@@ -90,4 +95,3 @@ void USART_GetCurrentWeight() // getting weight value from ring buffer
 	ControlBottomValue(); // compare the value of variable currentweight with set value (1.5 kg for instance)
 	
 }
-

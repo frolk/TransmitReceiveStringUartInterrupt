@@ -2,6 +2,8 @@
 #include <avr/interrupt.h>
 #include <stdlib.h>
 
+#include "GetWeight.h"
+
 int main(void) // main function do something
 {
 	UART_Init();

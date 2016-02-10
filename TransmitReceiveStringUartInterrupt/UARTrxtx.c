@@ -3,7 +3,6 @@
 #include <avr/interrupt.h>
 #include <stdlib.h>
 
-#include "GetWeight.h"
 #include "UARTrxtx.h"
 
 

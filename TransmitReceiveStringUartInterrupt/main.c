@@ -14,14 +14,19 @@ int main(void) // main function do something
 	
 	UART_Init(MYUBRR);
 	
-	uint8_t txMessage[16] = "Hello World!\r\n";
+	//uint8_t txMessage[16] = "Hello World!\r\n";
 	
 	while(1)
 	{
-		if (txCount == 0)	
-		{				
-			USART_SendStr(txMessage);
-		}
+				if ((usartRxBuf[rxBufTail-1] == 0x0A) && (rxCount > 0))
+					{
+						USART_GetBluetMessage();
+					}
+		
+		//if (txCount == 0)	
+		//{				
+			//USART_SendStr(txMessage);
+		//}
 		
 	}
 }

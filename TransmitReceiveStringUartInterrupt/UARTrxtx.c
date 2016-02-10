@@ -16,7 +16,10 @@ uint8_t usartRxBuf[SIZE_BUF];
 uint8_t rxBufTail = 0;
 uint8_t rxBufHead = 0;
 uint8_t rxCount = 0;// Receive variables
-
+uint8_t rxMessage[16];
+uint8_t BluetoothMessage[6];
+float rxCurrentWeight = 0;
+uint8_t bluetCommand;
 
 ISR (USART_RX_vect)   // interrupt routine
 {
@@ -92,4 +95,42 @@ uint8_t USART_GetChar(void) // take one symbol from buffer using the Head pointe
 	return 0;
 }
 
+void ControlBottomValue()   // function for detecting value of weight
+{
+		DDRB |= (1<<PORTB3);
+		if (rxCurrentWeight>3.5)
+		{
+				PORTB |= (1<<PORTB3);
+		}
+		else
+		{
+				PORTB &=~ (1<<PORTB3);
+		}
 	
+}
+
+void USART_GetCurrentWeight() // getting weight value from ring buffer
+{
+	
+		for (int i=0; i<16; i++)
+		{
+				rxMessage[i] = USART_GetChar();
+		}
+		USART_FlushRxBuf();  // flush our buffer and start from the beginning
+		rxCurrentWeight = atof(rxMessage+6); //convert our string into float integer
+		ControlBottomValue(); // compare the value of variable currentweight with set value (1.5 kg for instance)
+	
+}	
+
+void USART_GetBluetMessage() // getting weight value from ring buffer
+{
+	
+	for (int i=0; i<6; i++)
+	{
+		BluetoothMessage[i] = USART_GetChar();
+	}
+	USART_FlushRxBuf();  // flush our buffer and start from the beginning
+	bluetCommand = atof(BluetoothMessage); //convert our string into float integer
+	ControlBottomValue(); // compare the value of variable currentweight with set value (1.5 kg for instance)
+	
+}

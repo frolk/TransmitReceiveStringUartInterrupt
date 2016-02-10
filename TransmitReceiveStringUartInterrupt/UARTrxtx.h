@@ -19,6 +19,8 @@ extern uint8_t txBufHead;
 extern uint8_t txCount;
 
 
+void USART_GetBluetMessage();
+
 void USART_FlushRxBuf(void);
 
 uint8_t USART_GetChar(void);
@@ -28,6 +30,8 @@ void USART_FlushTxBuf(void);
 void USART_PutChar(uint8_t sym);
 
 void USART_SendStr(uint8_t *data);
+
+extern void USART_GetCurrentWeight();
 
 
 

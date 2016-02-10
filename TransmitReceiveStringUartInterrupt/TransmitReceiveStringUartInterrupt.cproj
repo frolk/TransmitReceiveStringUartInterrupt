@@ -113,16 +113,13 @@
     <Compile Include="UartInit.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="GetWeight.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="GetWeight.c">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="UartInit.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="UARTrxtx.c">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

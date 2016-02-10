@@ -122,6 +122,9 @@
     <Compile Include="UARTrxtx.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="UARTrxtx.h">
+      <SubType>compile</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="vsix\" />

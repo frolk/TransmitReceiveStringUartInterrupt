@@ -1,6 +1,9 @@
 
-#ifndef INCFILE1_H_
-#define INCFILE1_H_
+#ifndef UARTrxtx_H_
+#define UARTrxtx_H_
+
+#include <avr/io.h>
+
 
 #define SIZE_BUF 32
 
@@ -11,21 +14,14 @@ extern uint8_t rxCount;
 
 
 extern uint8_t usartTxBuf[SIZE_BUF];
-extern uint8_t txBufTail = 0;
-extern uint8_t txBufTail = 0;
-extern uint8_t txCount = 0;
-extern uint8_t txMessage[16];
+extern uint8_t txBufTail;
+extern uint8_t txBufHead;
+extern uint8_t txCount;
 
-
-void UART_Init();
-
-//void ControlBottomValue();  
-
-uint8_t usart_GetRxCount(void);
 
 void USART_FlushRxBuf(void);
 
-//uint8_t USART_GetChar(void);
+uint8_t USART_GetChar(void);
 
 void USART_FlushTxBuf(void);
 
@@ -35,4 +31,5 @@ void USART_SendStr(uint8_t *data);
 
 
 
-#endif 
+#endif
+

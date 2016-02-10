@@ -3,27 +3,27 @@
 #include <stdlib.h>
 
 
-#include "GetWeight.h"
+#include "UARTrxtx.h"
 #include "UartInit.h"
 
 
-
+uint8_t rxMessage[16]; 
 
 int main(void) // main function do something
 {
+	
+	
 	sei();
 	
 	UART_Init(MYUBRR);
 	
+	uint8_t txMessage[16] = "Hello World!";
 	
 	while(1)
 	{
-		if ((usartRxBuf[rxBufTail-1] == 0x0A) && (rxCount > 0) && (usartRxBuf[rxBufHead] == 'S')) 
-		{
-			
-		USART_GetCurrentWeight();  // here we getting current weight
 		
-		}
+		USART_SendStr(txMessage);
+		
 	}
 }
 

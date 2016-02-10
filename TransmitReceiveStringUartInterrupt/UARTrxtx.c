@@ -2,6 +2,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdlib.h>
+
 #include "GetWeight.h"
 #include "UARTrxtx.h"
 
@@ -10,17 +11,13 @@
 uint8_t usartTxBuf[SIZE_BUF];
 uint8_t txBufTail = 0;
 uint8_t txBufHead = 0;
-uint8_t txCount = 0;
-uint8_t txMessage[16]; // Transmit variables
+uint8_t txCount = 0; // Transmit variables
 
 uint8_t usartRxBuf[SIZE_BUF];
 uint8_t rxBufTail = 0;
 uint8_t rxBufHead = 0;
-uint8_t rxCount = 0;
-uint8_t rxMessage[16]; // Receive variables
+uint8_t rxCount = 0;// Receive variables
 
-//float CurrentWeight = 0;
-//float DetectValue;
 
 ISR (USART_RX_vect)   // interrupt routine
 {
@@ -35,7 +32,7 @@ ISR (USART_RX_vect)   // interrupt routine
 
 ISR (USART_TX_vect)   // transmit interrupt routine
 {
-	if(txCount) > 0 
+	if(txCount > 0)
 	{
 		UDR0 = usartTxBuf [txBufHead]; // take one byte from buffer and put it into transmit register
 		txCount--;
@@ -63,20 +60,15 @@ void USART_PutChar(uint8_t sym)// write next symbol into ring buffer
 	}
 }
 
-//void ControlBottomValue()   // function for detecting value of weight
-//{
-	//DDRB |= (1<<PORTB3);
-	//if (CurrentWeight>3.5)
-	//{
-		//PORTB |= (1<<PORTB3);
-	//}
-	//else
-	//{
-		//PORTB &=~ (1<<PORTB3);
-	//}
-	//
-//} //bottom control function from previous version of this file
-
+void USART_SendStr(uint8_t *data)// send string start from the first member with address pointed by *data
+{
+	uint8_t sym;
+	while(*data) // while data isn't '\0' or while data consist any data
+	{
+		sym = *data; // write consisting value of data into sym local variable
+		USART_PutChar(sym); // call function of putting every value into the ring buffer 
+	}
+}
 
 void USART_FlushRxBuf(void)  // flush our ring buffer after getting all of the array's member in out CurrentValue variable
 {
@@ -99,15 +91,4 @@ uint8_t USART_GetChar(void) // take one symbol from buffer using the Head pointe
 	return 0;
 }
 
-void USART_GetCurrentWeight() // getting weight value from ring buffer
-{
 	
-	for (int i=0; i<16; i++)
-	{
-		rxMessage[i] = USART_GetChar();
-	}
-	USART_FlushRxBuf();  // flush our buffer and start from the beginning
-	CurrentWeight = atof(rxMessage+6); //convert our string into float integer
-	ControlBottomValue(); // compare the value of variable currentweight with set value (1.5 kg for instance)
-	
-}

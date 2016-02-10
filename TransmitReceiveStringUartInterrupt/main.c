@@ -2,7 +2,6 @@
 #include <avr/interrupt.h>
 #include <stdlib.h>
 
-
 #include "UARTrxtx.h"
 #include "UartInit.h"
 
@@ -17,12 +16,14 @@ int main(void) // main function do something
 	
 	UART_Init(MYUBRR);
 	
-	uint8_t txMessage[16] = "Hello World!";
+	uint8_t txMessage[16] = "Hello World!\r\n";
 	
 	while(1)
 	{
-		
-		USART_SendStr(txMessage);
+		if (txCount == 0)	
+		{				
+			USART_SendStr(txMessage);
+		}
 		
 	}
 }

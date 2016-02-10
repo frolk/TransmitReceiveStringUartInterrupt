@@ -48,8 +48,10 @@ void USART_PutChar(uint8_t sym)// write next symbol into ring buffer
 																	// ring buffer we write it directly into udr
     else
 	{
+		
 		if (txCount < SIZE_BUF)
 		{
+			
 			usartTxBuf[txBufTail] = sym; // second and the next bytes we write into ring buffer with txBufTaail pointer
 			txCount++;  // increase variable that tells us how much unread data locate in ring buffer
 			txBufTail++; // increase our pointer
@@ -64,7 +66,7 @@ void USART_SendStr(uint8_t *data)// send string start from the first member with
 	uint8_t sym;
 	while(*data) // while data isn't '\0' or while data consist any data
 	{
-		sym = *data; // write consisting value of data into sym local variable
+		sym = *data++; // write consisting value of data into sym local variable
 		USART_PutChar(sym); // call function of putting every value into the ring buffer 
 	}
 }

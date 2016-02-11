@@ -11,7 +11,7 @@ extern uint8_t usartRxBuf[SIZE_BUF];
 extern uint8_t rxBufTail;
 extern uint8_t rxBufHead;
 extern uint8_t rxCount;
-
+extern uint8_t bluetCommand;
 
 extern uint8_t usartTxBuf[SIZE_BUF];
 extern uint8_t txBufTail;

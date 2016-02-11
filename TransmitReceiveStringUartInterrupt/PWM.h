@@ -1,9 +1,8 @@
-
 #ifndef PWM_H_
 #define PWM_H_
 
-extern uint32_t dutyCycle;
+void PWM_Init();
+void PWM_PinValue();
 
-extern void PWM_Init();
 
-#endif /* PWM_H_ */
+#endif 

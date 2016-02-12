@@ -7,7 +7,7 @@ extern void BL_DefComd();  // define bluetooth command
 
 void BL_GetMessage();
 
-uint8_t BluetoothMessage[6];
+uint8_t BL_msg[16]; // bluetooth message
 
 extern uint16_t PWMvalue;
 extern uint8_t bluetCommand;
